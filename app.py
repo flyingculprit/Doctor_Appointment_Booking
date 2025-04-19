@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
-from mongo_utils import register_user, authenticate_user, get_user_profile, store_appointment, get_user_appointments, delete_appointment, update_user_diseases, update_user_profile, cleanup_duplicates
-from api_utils import get_medical_info, get_disease_info
+from mongo_utils import register_user, authenticate_user, get_user_profile, store_appointment, get_user_appointments, delete_appointment, update_user_diseases, update_user_profile, cleanup_duplicates, get_all_users, get_all_bookings
+from api_utils import get_medical_info  # Corrected import
 from datetime import datetime, timedelta
 from flask_cors import CORS
 import os
@@ -15,17 +15,34 @@ def index():
     if 'username' in session:
         return render_template('index.html', username=session['username'])
     return redirect(url_for('login'))
+
+@app.route('/admin')
+def admin():
+    if 'username' not in session or session['username'] != 'admin@@00':
+        return redirect(url_for('login'))
+
+    filter_date = request.args.get('dateFilter')
+    filter_name = request.args.get('nameFilter')
+
+    users = get_all_users(filter_date, filter_name)
+    bookings = get_all_bookings(filter_date, filter_name)
+
+    return render_template('admin.html', users=users, bookings=bookings)
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
 
+        if username == 'admin@@00' and password == 'admin@@00':
+            session['username'] = username
+            return redirect(url_for('admin'))
+
         if authenticate_user(username, password):
             session['username'] = username
             return redirect(url_for('index'))
 
-        # Pass an error message to the template
         return render_template('login.html', error="Invalid credentials. Please enter the correct credentials.")
 
     return render_template('login.html')
@@ -95,7 +112,7 @@ def delete_appointment_route(appointment_id):
         return jsonify({"success": True, "message": "Appointment deleted successfully!"})
     else:
         return jsonify({"success": False, "message": "Failed to delete appointment."})
-    
+
 @app.route('/edit_diseases', methods=['POST'])
 def edit_diseases():
     if 'username' not in session:
@@ -142,7 +159,7 @@ def get_disease_info_api():
     disease_name = request.args.get("disease", "").strip()
     if not disease_name:
         return jsonify({"error": "No disease name provided"}), 400
-    
+
     disease_info = get_medical_info(disease_name)
     return jsonify({"result": disease_info})
 
@@ -166,11 +183,12 @@ def book_appointment():
         return jsonify({"success": False, "message": "Invalid date format. Use YYYY-MM-DD."}), 400
 
     store_appointment(session['username'], name, email, disease, clinic, date_obj, time)
-    
+
     # Clean up duplicates after booking
     cleanup_duplicates()
 
     return jsonify({"success": True, "message": "Appointment booked successfully!"})
+
 @app.route('/edit_profile', methods=['POST'])
 def edit_profile():
     if 'username' not in session:
@@ -200,7 +218,7 @@ def edit_profile():
     else:
         flash("No changes made to the profile.", "info")
         return redirect(url_for('profile'))
-    
+
 def handle_appointment_booking(request):
     name = request.form.get('name')
     email = request.form.get('email')

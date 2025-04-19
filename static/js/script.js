@@ -7,17 +7,118 @@ if (typeof bookingStep === "undefined") {
 // ✅ Disease List (10 major diseases with 3 clinics each)
 if (typeof diseases === "undefined") {
     var diseases = {
-        "Fever": ["City Hospital", "Apollo Clinic", "Green Life"],
-        "Diabetes": ["Sunrise Clinic", "Sugar Care Center", "Metro Health"],
-        "Hypertension": ["Carewell Hospital", "BP Wellness", "MediCare"],
-        "Migraine": ["Neurology Care", "Headache Relief Clinic", "NeuroMed"],
-        "Eye Infection": ["Vision Hospital", "Eye Care Center", "Ophthalmic Plus"],
-        "Skin Allergy": ["DermaLife", "Skin Solutions", "Healthy Skin Clinic"],
-        "Thyroid": ["Hormone Wellness", "Endocrine Care", "Thyroid Cure"],
-        "Arthritis": ["Joint Relief Center", "Ortho Life", "Bone & Joint Care"],
-        "Asthma": ["Lung Health", "Breathe Easy", "Pulmonology Plus"],
-        "Dental Pain": ["Smile Dental", "Tooth Care Clinic", "Oral Health Center"]
-    };
+        "Fever": [
+            "City Hospital - Dr. Thomas (General Physician)",
+            "City Hospital - Dr. Meera (Internal Medicine)",
+            "City Hospital - Dr. Raj (General Physician)",
+            "Apollo Clinic - Dr. Rina (Family Medicine)",
+            "Apollo Clinic - Dr. Ajay (General Physician)",
+            "Apollo Clinic - Dr. Sneha (General Medicine)",
+            "Green Life - Dr. Anand (Physician)",
+            "Green Life - Dr. Neha (General Medicine)",
+            "Green Life - Dr. Kiran (Internal Medicine)"
+        ],
+        "Diabetes": [
+            "Sunrise Clinic - Dr. Kavitha (Endocrinologist)",
+            "Sunrise Clinic - Dr. Arun (Diabetologist)",
+            "Sunrise Clinic - Dr. Nila (General Physician)",
+            "Sugar Care Center - Dr. Vimal (Diabetologist)",
+            "Sugar Care Center - Dr. Reshma (Endocrinologist)",
+            "Sugar Care Center - Dr. Farhan (Internal Medicine)",
+            "Metro Health - Dr. Isha (Endocrinologist)",
+            "Metro Health - Dr. Ravi (Diabetologist)",
+            "Metro Health - Dr. Sneha (General Medicine)"
+        ],
+        "Hypertension": [
+            "Carewell Hospital - Dr. Veena (Cardiologist)",
+            "Carewell Hospital - Dr. Mohan (General Physician)",
+            "Carewell Hospital - Dr. Rekha (Internal Medicine)",
+            "BP Wellness - Dr. Nikhil (Cardiologist)",
+            "BP Wellness - Dr. Raji (Hypertension Specialist)",
+            "BP Wellness - Dr. Karthik (General Physician)",
+            "MediCare - Dr. Aarti (Cardiologist)",
+            "MediCare - Dr. Satish (Physician)",
+            "MediCare - Dr. Laya (Internal Medicine)"
+        ],
+        "Migraine": [
+            "Neurology Care - Dr. Hari (Neurologist)",
+            "Neurology Care - Dr. Deepa (Headache Specialist)",
+            "Neurology Care - Dr. Vikram (Neurologist)",
+            "Headache Relief Clinic - Dr. Anu (Neurologist)",
+            "Headache Relief Clinic - Dr. Rajesh (Neuro Specialist)",
+            "Headache Relief Clinic - Dr. Shreya (Pain Management)",
+            "NeuroMed - Dr. Divya (Neurologist)",
+            "NeuroMed - Dr. Kiran (Migraine Specialist)",
+            "NeuroMed - Dr. Naveen (General Neurology)"
+        ],
+        "Eye Infection": [
+            "Vision Hospital - Dr. Suresh (Ophthalmologist)",
+            "Vision Hospital - Dr. Kavya (Eye Surgeon)",
+            "Vision Hospital - Dr. Vinoth (Eye Specialist)",
+            "Eye Care Center - Dr. Keerthi (Ophthalmologist)",
+            "Eye Care Center - Dr. George (Eye Consultant)",
+            "Eye Care Center - Dr. Lakshmi (Ophthalmologist)",
+            "Ophthalmic Plus - Dr. Ramesh (Cornea Specialist)",
+            "Ophthalmic Plus - Dr. Ayesha (Eye Surgeon)",
+            "Ophthalmic Plus - Dr. Bala (Ophthalmologist)"
+        ],
+        "Skin Allergy": [
+            "DermaLife - Dr. Nithya (Dermatologist)",
+            "DermaLife - Dr. Raghav (Skin Specialist)",
+            "DermaLife - Dr. Anjali (Allergy Specialist)",
+            "Skin Solutions - Dr. Prakash (Dermatologist)",
+            "Skin Solutions - Dr. Swetha (Skin Allergy Expert)",
+            "Skin Solutions - Dr. Manoj (Immunologist)",
+            "Healthy Skin Clinic - Dr. Dhanya (Dermatologist)",
+            "Healthy Skin Clinic - Dr. Arjun (Allergy Specialist)",
+            "Healthy Skin Clinic - Dr. Sana (Skin Specialist)"
+        ],
+        "Thyroid": [
+            "Hormone Wellness - Dr. Reema (Endocrinologist)",
+            "Hormone Wellness - Dr. Kishore (Thyroid Specialist)",
+            "Hormone Wellness - Dr. Meenakshi (Hormone Expert)",
+            "Endocrine Care - Dr. Dev (Endocrinologist)",
+            "Endocrine Care - Dr. Ritu (Thyroid Specialist)",
+            "Endocrine Care - Dr. Farooq (General Endocrinology)",
+            "Thyroid Cure - Dr. Aarthi (Thyroid Consultant)",
+            "Thyroid Cure - Dr. Imran (Endocrinologist)",
+            "Thyroid Cure - Dr. Yash (Hormone Therapy Expert)"
+        ],
+        "Arthritis": [
+            "Joint Relief Center - Dr. Sanjay (Rheumatologist)",
+            "Joint Relief Center - Dr. Priya (Ortho-Rheumo)",
+            "Joint Relief Center - Dr. Abhinav (Orthopedic)",
+            "Ortho Life - Dr. Swaminathan (Orthopedic Surgeon)",
+            "Ortho Life - Dr. Isha (Joint Specialist)",
+            "Ortho Life - Dr. Mani (Physiotherapist)",
+            "Bone & Joint Care - Dr. Rekha (Ortho-Rheumatology)",
+            "Bone & Joint Care - Dr. Aditya (Bone Specialist)",
+            "Bone & Joint Care - Dr. Nidhi (Ortho Expert)"
+        ],
+        "Asthma": [
+            "Lung Health - Dr. Parth (Pulmonologist)",
+            "Lung Health - Dr. Jaya (Respiratory Specialist)",
+            "Lung Health - Dr. Varun (Chest Physician)",
+            "Breathe Easy - Dr. Snehal (Pulmonologist)",
+            "Breathe Easy - Dr. Aravind (Asthma Expert)",
+            "Breathe Easy - Dr. Radhika (Allergy Specialist)",
+            "Pulmonology Plus - Dr. Dinesh (Pulmonologist)",
+            "Pulmonology Plus - Dr. Shalini (Respiratory Therapist)",
+            "Pulmonology Plus - Dr. Mohit (Chest Specialist)"
+        ],
+        "Dental Pain": [
+            "Smile Dental - Dr. Krishna (Dentist)",
+            "Smile Dental - Dr. Anusha (Dental Surgeon)",
+            "Smile Dental - Dr. Rakesh (Oral Specialist)",
+            "Tooth Care Clinic - Dr. Geetha (Orthodontist)",
+            "Tooth Care Clinic - Dr. Shyam (Prosthodontist)",
+            "Tooth Care Clinic - Dr. Neeraja (Endodontist)",
+            "Oral Health Center - Dr. Vinay (Dental Surgeon)",
+            "Oral Health Center - Dr. Lavanya (Cosmetic Dentist)",
+            "Oral Health Center - Dr. Ashwin (Oral & Maxillofacial)"
+        ]
+    }
+    ;
 }
 
 // ✅ Toggle Menu (☰)
@@ -286,20 +387,3 @@ function handleUserMessage() {
     inputField.value = ""; // Clear input field
 }
 
-function fetchDiseaseDetails(disease) {
-    fetch(`/get_disease_info?disease=${encodeURIComponent(disease)}`)
-        .then(response => response.json())
-        .then(data => {
-            const chatContainer = document.getElementById("chat-messages");
-            let botMessage = document.createElement("div");
-            botMessage.classList.add("chat-message", "bot-message");
-            botMessage.innerHTML = `<strong>${data.name}</strong><br>
-                <b>Symptoms:</b> ${data.symptoms}<br>
-                <b>Causes:</b> ${data.causes}<br>
-                <b>Treatment:</b> ${data.treatment}`;
-            chatContainer.appendChild(botMessage);
-        })
-        .catch(error => {
-            console.error("Error fetching disease info:", error);
-        });
-}

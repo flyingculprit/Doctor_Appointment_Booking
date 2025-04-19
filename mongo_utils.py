@@ -1,3 +1,6 @@
+
+# mongo_utils.py
+
 from pymongo import MongoClient
 import os
 from bson import ObjectId
@@ -6,6 +9,34 @@ from datetime import datetime
 def get_mongo_client():
     client = MongoClient(os.getenv("MONGO_URI"))
     return client
+
+def get_all_users(filter_date=None, filter_name=None):
+    client = get_mongo_client()
+    db = client['doctor_appointment_db']
+    users_collection = db['users']
+    
+    query = {}
+    if filter_date:
+        query['date'] = filter_date
+    if filter_name:
+        query['name'] = filter_name
+    
+    users = list(users_collection.find(query, {'_id': 0, 'username': 1, 'name': 1, 'email': 1, 'phone': 1, 'diseases': 1}))
+    return users
+
+def get_all_bookings(filter_date=None, filter_name=None):
+    client = get_mongo_client()
+    db = client['doctor_appointment_db']
+    bookings_collection = db['appointments']
+    
+    query = {}
+    if filter_date:
+        query['date'] = filter_date
+    if filter_name:
+        query['name'] = filter_name
+    
+    bookings = list(bookings_collection.find(query, {'_id': 0, 'name': 1, 'email': 1, 'disease': 1, 'clinic': 1, 'date': 1, 'time': 1, 'status': 1}))
+    return bookings
 
 def register_user(name, username, email, phone, password, diseases):
     client = get_mongo_client()
