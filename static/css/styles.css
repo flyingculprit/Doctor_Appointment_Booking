@@ -5,7 +5,16 @@
     display: flex;
     justify-content: space-between;
 }
-
+.lazyload {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.section {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.section {
+    will-change: transform, opacity;
+}
 .menu-icon {
     font-size: 24px;
     color: white;

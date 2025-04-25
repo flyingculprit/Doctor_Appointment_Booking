@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
-from mongo_utils import register_user, authenticate_user, get_user_profile, store_appointment, get_user_appointments, delete_appointment, update_user_diseases, update_user_profile, cleanup_duplicates, get_all_users, get_all_bookings
+from mongo_utils import register_user, authenticate_user, get_user_profile, store_appointment, get_user_appointments, delete_appointment, update_user_diseases, update_user_profile, cleanup_duplicates, get_all_users, get_all_bookings,store_feedback
 from api_utils import get_medical_info  # Corrected import
 from datetime import datetime, timedelta
 from flask_cors import CORS
@@ -141,6 +141,22 @@ def delete_disease():
             return redirect(url_for('profile'))
 
     return jsonify({"success": False, "message": "Failed to delete disease."}), 500
+
+@app.route('/submit_feedback', methods=['POST'])
+def submit_feedback():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    feedback = request.form.get('feedback')
+
+    if name and email and feedback:
+        success = store_feedback(name, email, feedback)
+        if success:
+            return jsonify({"success": True, "message": "Feedback submitted successfully!"})
+        else:
+            return jsonify({"success": False, "message": "Error submitting feedback."})
+    else:
+        return jsonify({"success": False, "message": "Invalid input data."})
+
 
 @app.route('/chatbot', methods=['POST'])
 def chatbot():

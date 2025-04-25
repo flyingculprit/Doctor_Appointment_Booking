@@ -222,11 +222,12 @@ function handleBookingResponse(userInput) {
         completeBooking();
     }
 }
+
 function showTimeOptions() {
-    let times = ["09:00 AM", "10:00 AM", "11:00 AM", "02:00 PM", "03:00 PM", "04:00 PM", "06:00 PM", "07:00 PM"];
-    let buttons = times.map(time => 
+    const times = generateRandomTimes(8);
+    const buttons = times.map(time => 
         `<button class="btn btn-sm btn-success m-1" onclick="handleBookingResponse('${time}')">${time}</button>`
-    ).join("");
+    ).join(" ");
 
     // Check if chat container exists
     const chatContainer = document.getElementById("chat-messages");
@@ -236,6 +237,21 @@ function showTimeOptions() {
     }
 
     appendMessage("Chatbot", `Select a time slot:<br> ${buttons}`);
+}
+
+function generateRandomTimes(count) {
+    const times = [];
+    const hours = ['12', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11'];
+    const periods = ['AM', 'PM'];
+
+    for (let i = 0; i < count; i++) {
+        const hour = hours[Math.floor(Math.random() * hours.length)];
+        const minute = Math.floor(Math.random() * 60).toString().padStart(2, '0');
+        const period = periods[Math.floor(Math.random() * periods.length)];
+        times.push(`${hour}:${minute} ${period}`);
+    }
+
+    return times;
 }
 
 

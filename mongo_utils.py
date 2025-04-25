@@ -131,6 +131,21 @@ def get_user_appointments(username):
     
     return appointments
 
+def store_feedback(name, email, feedback):
+    client = get_mongo_client()
+    db = client['doctor_appointment_db']
+    feedback_collection = db['feedback']
+    
+    feedback_data = {
+        "name": name,
+        "email": email,
+        "feedback": feedback,
+        "created_at": datetime.utcnow()
+    }
+    
+    feedback_collection.insert_one(feedback_data)
+    return True
+
 def delete_appointment(username, appointment_id):
     client = get_mongo_client()
     db = client['doctor_appointment_db']

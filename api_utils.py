@@ -26,7 +26,7 @@ app = Flask(__name__)
 
 def get_medical_info(disease_name):
     """Fetches medical information about a disease and recommends foods."""
-    prompt = f"Provide information on {disease_name}. Include causes, symptoms, treatments, and dietary recommendations."
+    prompt = f"Provide information on {disease_name}. Include causes, symptoms, treatments, and dietary recommendations. each topic i need in 1 line so totally 4 lines. in neat format easily understandable not in capital letter segrigate in -,:,; etc. and also include vitamin deficiency if any. and include 1) \n 2)\n  3)\n like i need "
     model = genai.GenerativeModel("gemini-2.0-flash")
     response = model.generate_content(prompt)
     result = response.text

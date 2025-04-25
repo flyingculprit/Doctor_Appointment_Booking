@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Hospital Appointment System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
@@ -361,6 +362,18 @@
             color: #e0e0e0;
         }
 
+        .btn-primary {
+            background-color: #007bff;
+            /* Blue color */
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            /* Darker blue on hover */
+            border-color: #0056b3;
+        }
+
         .btn-primary.dark-mode {
             background-color: #0078d7;
             border-color: #0078d7;
@@ -376,46 +389,46 @@
             background-color: #1e1e1e;
             color: #e0e0e0;
         }
+
         .news-grid .news-item {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
 
-.news-grid .news-item:hover {
-  transform: translateY(-5px);
-}
+        .news-grid .news-item:hover {
+            transform: translateY(-5px);
+        }
 
-.pagination button {
-  min-width: 140px;
-}
+        .pagination button {
+            min-width: 140px;
+        }
 
-/*this is ok*/
+        /*this is ok*/
 
-.modal.fade .modal-dialog {
-  transform: translateY(-50px);
-  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-  opacity: 0;
-}
+        .modal.fade .modal-dialog {
+            transform: translateY(-50px);
+            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+            opacity: 0;
+        }
 
-.modal.fade.show .modal-dialog {
-  transform: translateY(0);
-  opacity: 1;
-}
+        .modal.fade.show .modal-dialog {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
-#appointmentForm input:focus,
-#appointmentForm select:focus {
-  box-shadow: 0 0 5px #007bff;
-  border-color: #007bff;
-}
+        #appointmentForm input:focus,
+        #appointmentForm select:focus {
+            box-shadow: 0 0 5px #007bff;
+            border-color: #007bff;
+        }
 
-#appointmentForm button:hover {
-  transform: scale(1.03);
-  transition: 0.2s ease;
-}
-
+        #appointmentForm button:hover {
+            transform: scale(1.03);
+            transition: 0.2s ease;
+        }
     </style>
 </head>
 
@@ -452,6 +465,9 @@
                         <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#feedback">Feedback</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                     </li>
                 </ul>
@@ -461,99 +477,118 @@
 
 
 
-<!-- Introduction Section -->
-<section class="section" id="intro" style="background: url({{ url_for('static', filename='images/intro-bg.gif') }}) no-repeat center center fixed; background-size: cover;">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h2 class="text-white">Introduction</h2>
-                <p class="text-white">Welcome to our Healthcare System. We are dedicated to providing the best healthcare services to our patients. Our mission is to ensure that every individual has access to quality healthcare and expert medical advice.</p>
-                <br> <a href="#about-us" class="btn btn-primary">Learn More</a><br></br>
-            </div>
-            <div class="col-md-6">
-                <!-- Optionally, you can add an image here if you want an image on the right side -->
-                <img src="{{ url_for('static', filename='images/5506-184226968_small (1).gif') }}" class="img-fluid rounded" alt="Introduction">
+    <!-- Introduction Section -->
+    <section class="section" id="intro"
+        style="background: url({{ url_for('static', filename='images/intro-bg.gif') }}) no-repeat center center fixed; background-size: cover;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="text-white">Introduction</h2>
+                    <p class="text-white">Welcome to our Healthcare System. We are dedicated to providing the best
+                        healthcare services to our patients. Our mission is to ensure that every individual has access
+                        to quality healthcare and expert medical advice.</p>
+                    <br> <a href="#about-us" class="btn btn-primary">Learn More</a><br></br>
+                </div>
+                <div class="col-md-6">
+                    <!-- Optionally, you can add an image here if you want an image on the right side -->
+                    <img src="{{ url_for('static', filename='images/5506-184226968_small (1).gif') }}"
+                        class="img-fluid rounded" alt="Introduction">
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- About Us Section -->
-<section class="section" id="about-us" style="background: url({{ url_for('static', filename='images/earth-day-celebration-concept.jpg') }}) no-repeat center center fixed; background-size: cover; padding: 60px 0;">
-    <div class="container">
-      <div class="row align-items-center">
-        
-        <!-- Image Column -->
-        <div class="col-md-6" data-aos="fade-right">
-          <img src="{{ url_for('static', filename='images/about.jpg') }}" class="img-fluid rounded shadow-lg" alt="About Us">
-        </div>
-  
-        <!-- Text Content Column -->
-        <div class="col-md-6" data-aos="fade-left">
-          <div class="card border-primary shadow-lg mb-3" style="max-width: 540px; background-color: rgba(255, 255, 255, 0.9);">
-            <div class="card-header bg-primary text-white fw-bold fs-5">About Us</div>
-            <div class="card-body text-dark">
-              <p class="card-text">Our team consists of highly skilled doctors, nurses, and healthcare professionals who are committed to delivering exceptional care. We use the latest technology and medical practices to ensure the best outcomes for our patients.</p>
-              <p class="card-text">We are dedicated to providing the best healthcare services to our patients. Our mission is to ensure that every individual has access to quality healthcare and expert medical advice.</p>
-              <a href="#news" class="btn btn-primary mt-3">News</a>
-            </div>
-          </div>
-        </div>
-  
-      </div>
-    </div>
-  </section>
-  
+    <!-- About Us Section -->
+    <section class="section" id="about-us"
+        style="background: url({{ url_for('static', filename='images/earth-day-celebration-concept.jpg') }}) no-repeat center center fixed; background-size: cover; padding: 60px 0;">
+        <div class="container">
+            <div class="row align-items-center">
 
-<!-- Services Section -->
-<section class="section py-5" id="our-services" style="background: url({{ url_for('static', filename='images/abstract-green-background.jpg') }}) no-repeat center center fixed; background-size: cover;">
-    <div class="container">
-      <h2 class="fw-bold text-white text-center mb-5" data-aos="zoom-in">Our Services</h2>
-      <div class="row">
-  
-        <!-- Book Appointments -->
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card service-card border-0 shadow-lg h-100">
-            <img src="{{ url_for('static', filename='images/111appointment.jpg') }}" class="card-img-top img-fluid service-img" alt="Appointment">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Book Appointments</h5>
-              <p class="card-text">Schedule appointments with top hospitals & specialists easily.</p>
-              <button type="button" class="btn btn-primary book-button mt-2" data-bs-toggle="modal" data-bs-target="#appointmentModal1">
-                Book Now
-              </button>
+                <!-- Image Column -->
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="{{ url_for('static', filename='images/about.jpg') }}" class="img-fluid rounded shadow-lg"
+                        alt="About Us">
+                </div>
+
+                <!-- Text Content Column -->
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="card border-primary shadow-lg mb-3"
+                        style="max-width: 540px; background-color: rgba(255, 255, 255, 0.9);">
+                        <div class="card-header bg-primary text-white fw-bold fs-5">About Us</div>
+                        <div class="card-body text-dark">
+                            <p class="card-text">Our team consists of highly skilled doctors, nurses, and healthcare
+                                professionals who are committed to delivering exceptional care. We use the latest
+                                technology and medical practices to ensure the best outcomes for our patients.</p>
+                            <p class="card-text">We are dedicated to providing the best healthcare services to our
+                                patients. Our mission is to ensure that every individual has access to quality
+                                healthcare and expert medical advice.</p>
+                            <a href="#news" class="btn btn-primary mt-3">News</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
         </div>
-  
-        <!-- Expert Consultation -->
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="card service-card border-0 shadow-lg h-100">
-            <img src="{{ url_for('static', filename='images/consultation.jpg') }}" class="card-img-top img-fluid service-img" alt="Consultation">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Expert Consultation</h5>
-              <p class="card-text">Get expert advice from doctors and health professionals anytime.</p>
+    </section>
+
+
+
+
+    <!-- Services Section -->
+    <section class="section py-5" id="our-services"
+        style="background: url({{ url_for('static', filename='images/abstract-green-background.jpg') }}) no-repeat center center fixed; background-size: cover;">
+        <div class="container">
+            <h2 class="fw-bold text-white text-center mb-5" data-aos="zoom-in">Our Services</h2>
+            <div class="row">
+
+                <!-- Book Appointments -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card service-card border-0 shadow-lg h-100">
+                        <img src="{{ url_for('static', filename='images/111appointment.jpg') }}"
+                            class="card-img-top img-fluid service-img" alt="Appointment">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Book Appointments</h5>
+                            <p class="card-text">Schedule appointments with top hospitals & specialists easily.</p>
+                            <button type="button" class="btn btn-primary book-button mt-2" data-bs-toggle="modal"
+                                data-bs-target="#appointmentModal1">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expert Consultation -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-card border-0 shadow-lg h-100">
+                        <img src="{{ url_for('static', filename='images/consultation.jpg') }}"
+                            class="card-img-top img-fluid service-img" alt="Consultation">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Expert Consultation</h5>
+                            <p class="card-text">Get expert advice from doctors and health professionals anytime.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Information -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-card border-0 shadow-lg h-100">
+                        <img src="{{ url_for('static', filename='images/1healthinfo.jpg') }}"
+                            class="card-img-top img-fluid service-img" alt="Health Info">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Health Information</h5>
+                            <p class="card-text">Stay updated with the latest health news, tips, and awareness.</p>
+                            <button type="button" class="btn btn-primary view-button mt-2" data-bs-toggle="modal"
+                                data-bs-target="#healthInfoModal">
+                                View Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
         </div>
-  
-        <!-- Health Information -->
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="card service-card border-0 shadow-lg h-100">
-            <img src="{{ url_for('static', filename='images/1healthinfo.jpg') }}" class="card-img-top img-fluid service-img" alt="Health Info">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Health Information</h5>
-              <p class="card-text">Stay updated with the latest health news, tips, and awareness.</p>
-              <button type="button" class="btn btn-primary view-button mt-2" data-bs-toggle="modal" data-bs-target="#healthInfoModal">
-                View Now
-              </button>
-            </div>
-          </div>
-        </div>
-  
-      </div>
-    </div>
-  </section>
-  
+    </section>
+
 
 
 
@@ -596,7 +631,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="time" class="form-label">Time</label>
-                            <input type="time" class="form-control" id="time" name="time" required>
+                            <select class="form-control" id="time" name="time" required>
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -632,22 +669,6 @@
         </div>
     </div>
 
-<!-- News Section -->
-<section class="section py-5" id="news" style="background: url({{ url_for('static', filename='images/news-bg1.jpg') }}) no-repeat center center fixed; background-size: cover;">
-    <div class="container">
-      <h2 class="fw-bold text-white text-center mb-4" data-aos="fade-down">Latest Healthcare News</h2>
-      
-      <div class="news-grid row gy-4" id="news-grid" data-aos="fade-up">
-        <!-- Dynamic news items inserted here via JS -->
-      </div>
-      
-      <div class="pagination d-flex justify-content-center mt-4" data-aos="zoom-in">
-        <button id="prev-page" class="btn btn-outline-light me-2" disabled>Previous Page</button>
-        <button id="next-page" class="btn btn-outline-light">Next Page</button>
-      </div>
-    </div>
-  </section>
-  
 
 
 
@@ -686,7 +707,9 @@
             <div class="card-footer">
                 <div class="input-group">
                     <textarea id="chat-input" class="form-control" placeholder="Type a message..." rows="1"></textarea>
-                    <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+                    <button class="btn btn-primary" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i> <!-- Send icon -->
+                    </button>
                 </div>
             </div>
         </div>
@@ -711,6 +734,58 @@
         </div>
     </div>
 
+
+
+    <!-- News Section -->
+    <section class="section py-5" id="news"
+        style="background: url({{ url_for('static', filename='images/news-bg1.jpg') }}) no-repeat center center fixed; background-size: cover;">
+        <div class="container">
+            <h2 class="fw-bold text-white text-center mb-4" data-aos="fade-down">Latest Healthcare News</h2>
+
+            <div class="news-grid row gy-4" id="news-grid" data-aos="fade-up">
+                <!-- Dynamic news items inserted here via JS -->
+            </div>
+
+            <div class="pagination d-flex justify-content-center mt-4" data-aos="zoom-in">
+                <button id="prev-page" class="btn btn-outline-light me-2" disabled>Previous Page</button>
+                <button id="next-page" class="btn btn-outline-light">Next Page</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Feedback Section -->
+    <section class="section py-5" id="feedback"
+        style="background: url({{ url_for('static', filename='images/feedback-bg.jpg') }}) no-repeat center center fixed; background-size: cover;">
+        <div class="container">
+            <h2 class="fw-bold text-white text-center mb-5" data-aos="zoom-in">Feedback & Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card shadow-lg">
+                        <div class="card-body">
+                            <form id="feedbackForm" method="POST" action="/submit_feedback">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="feedback" class="form-label">Feedback</label>
+                                    <textarea class="form-control" id="feedback" name="feedback" rows="4"
+                                        required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3 mt-5">
         <div class="container">
@@ -726,6 +801,83 @@
     </div>
 
     <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                const formData = new FormData(this);
+                fetch('/submit_feedback', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                            this.reset(); // Reset the form
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error submitting feedback:', error);
+                        alert('Error submitting feedback. Please try again.');
+                    });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeSelect = document.getElementById('time');
+            const randomTimes = generateRandomTimes(8, 11);
+
+            randomTimes.forEach(time => {
+                const option = document.createElement('option');
+                option.value = time;
+                option.textContent = time;
+                timeSelect.appendChild(option);
+            });
+        });
+
+        function generateRandomTimes(min, max) {
+            const times = [];
+            const count = Math.floor(Math.random() * (max - min + 1)) + min;
+
+            for (let i = 0; i < count; i++) {
+                let hour = Math.floor(Math.random() * 12) + 1; // 1 to 12
+                let minute = Math.floor(Math.random() * 60); // 0 to 59
+                let period = Math.random() < 0.5 ? 'AM' : 'PM';
+
+                // Format the time
+                let formattedHour = hour.toString().padStart(2, '0');
+                let formattedMinute = minute.toString().padStart(2, '0');
+                let time = `${formattedHour}:${formattedMinute} ${period}`;
+
+                times.push(time);
+            }
+
+            return times;
+        }
+
+
+        // Function to send the message
+        function sendMessage() {
+            const chatInput = document.getElementById('chat-input');
+            const message = chatInput.value.trim();
+            if (message) {
+                // Add your logic to handle the message
+                console.log('Sending message:', message);
+                chatInput.value = ''; // Clear the input field
+            }
+        }
+
+        // Event listener for the Enter key
+        document.getElementById('chat-input').addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the default form submission
+                sendMessage(); // Call the sendMessage function
+            }
+        });
+
         // Ensure variables are declared only once
         if (typeof bookingStep === "undefined") {
             var bookingStep = 0;
@@ -735,118 +887,118 @@
         // Disease List (10 major diseases with 3 clinics each)
         if (typeof diseases === "undefined") {
             var diseases = {
-    "Fever": [
-        "City Hospital - Dr. Thomas (General Physician)",
-        "City Hospital - Dr. Meera (Internal Medicine)",
-        "City Hospital - Dr. Raj (General Physician)",
-        "Apollo Clinic - Dr. Rina (Family Medicine)",
-        "Apollo Clinic - Dr. Ajay (General Physician)",
-        "Apollo Clinic - Dr. Sneha (General Medicine)",
-        "Green Life - Dr. Anand (Physician)",
-        "Green Life - Dr. Neha (General Medicine)",
-        "Green Life - Dr. Kiran (Internal Medicine)"
-    ],
-    "Diabetes": [
-        "Sunrise Clinic - Dr. Kavitha (Endocrinologist)",
-        "Sunrise Clinic - Dr. Arun (Diabetologist)",
-        "Sunrise Clinic - Dr. Nila (General Physician)",
-        "Sugar Care Center - Dr. Vimal (Diabetologist)",
-        "Sugar Care Center - Dr. Reshma (Endocrinologist)",
-        "Sugar Care Center - Dr. Farhan (Internal Medicine)",
-        "Metro Health - Dr. Isha (Endocrinologist)",
-        "Metro Health - Dr. Ravi (Diabetologist)",
-        "Metro Health - Dr. Sneha (General Medicine)"
-    ],
-    "Hypertension": [
-        "Carewell Hospital - Dr. Veena (Cardiologist)",
-        "Carewell Hospital - Dr. Mohan (General Physician)",
-        "Carewell Hospital - Dr. Rekha (Internal Medicine)",
-        "BP Wellness - Dr. Nikhil (Cardiologist)",
-        "BP Wellness - Dr. Raji (Hypertension Specialist)",
-        "BP Wellness - Dr. Karthik (General Physician)",
-        "MediCare - Dr. Aarti (Cardiologist)",
-        "MediCare - Dr. Satish (Physician)",
-        "MediCare - Dr. Laya (Internal Medicine)"
-    ],
-    "Migraine": [
-        "Neurology Care - Dr. Hari (Neurologist)",
-        "Neurology Care - Dr. Deepa (Headache Specialist)",
-        "Neurology Care - Dr. Vikram (Neurologist)",
-        "Headache Relief Clinic - Dr. Anu (Neurologist)",
-        "Headache Relief Clinic - Dr. Rajesh (Neuro Specialist)",
-        "Headache Relief Clinic - Dr. Shreya (Pain Management)",
-        "NeuroMed - Dr. Divya (Neurologist)",
-        "NeuroMed - Dr. Kiran (Migraine Specialist)",
-        "NeuroMed - Dr. Naveen (General Neurology)"
-    ],
-    "Eye Infection": [
-        "Vision Hospital - Dr. Suresh (Ophthalmologist)",
-        "Vision Hospital - Dr. Kavya (Eye Surgeon)",
-        "Vision Hospital - Dr. Vinoth (Eye Specialist)",
-        "Eye Care Center - Dr. Keerthi (Ophthalmologist)",
-        "Eye Care Center - Dr. George (Eye Consultant)",
-        "Eye Care Center - Dr. Lakshmi (Ophthalmologist)",
-        "Ophthalmic Plus - Dr. Ramesh (Cornea Specialist)",
-        "Ophthalmic Plus - Dr. Ayesha (Eye Surgeon)",
-        "Ophthalmic Plus - Dr. Bala (Ophthalmologist)"
-    ],
-    "Skin Allergy": [
-        "DermaLife - Dr. Nithya (Dermatologist)",
-        "DermaLife - Dr. Raghav (Skin Specialist)",
-        "DermaLife - Dr. Anjali (Allergy Specialist)",
-        "Skin Solutions - Dr. Prakash (Dermatologist)",
-        "Skin Solutions - Dr. Swetha (Skin Allergy Expert)",
-        "Skin Solutions - Dr. Manoj (Immunologist)",
-        "Healthy Skin Clinic - Dr. Dhanya (Dermatologist)",
-        "Healthy Skin Clinic - Dr. Arjun (Allergy Specialist)",
-        "Healthy Skin Clinic - Dr. Sana (Skin Specialist)"
-    ],
-    "Thyroid": [
-        "Hormone Wellness - Dr. Reema (Endocrinologist)",
-        "Hormone Wellness - Dr. Kishore (Thyroid Specialist)",
-        "Hormone Wellness - Dr. Meenakshi (Hormone Expert)",
-        "Endocrine Care - Dr. Dev (Endocrinologist)",
-        "Endocrine Care - Dr. Ritu (Thyroid Specialist)",
-        "Endocrine Care - Dr. Farooq (General Endocrinology)",
-        "Thyroid Cure - Dr. Aarthi (Thyroid Consultant)",
-        "Thyroid Cure - Dr. Imran (Endocrinologist)",
-        "Thyroid Cure - Dr. Yash (Hormone Therapy Expert)"
-    ],
-    "Arthritis": [
-        "Joint Relief Center - Dr. Sanjay (Rheumatologist)",
-        "Joint Relief Center - Dr. Priya (Ortho-Rheumo)",
-        "Joint Relief Center - Dr. Abhinav (Orthopedic)",
-        "Ortho Life - Dr. Swaminathan (Orthopedic Surgeon)",
-        "Ortho Life - Dr. Isha (Joint Specialist)",
-        "Ortho Life - Dr. Mani (Physiotherapist)",
-        "Bone & Joint Care - Dr. Rekha (Ortho-Rheumatology)",
-        "Bone & Joint Care - Dr. Aditya (Bone Specialist)",
-        "Bone & Joint Care - Dr. Nidhi (Ortho Expert)"
-    ],
-    "Asthma": [
-        "Lung Health - Dr. Parth (Pulmonologist)",
-        "Lung Health - Dr. Jaya (Respiratory Specialist)",
-        "Lung Health - Dr. Varun (Chest Physician)",
-        "Breathe Easy - Dr. Snehal (Pulmonologist)",
-        "Breathe Easy - Dr. Aravind (Asthma Expert)",
-        "Breathe Easy - Dr. Radhika (Allergy Specialist)",
-        "Pulmonology Plus - Dr. Dinesh (Pulmonologist)",
-        "Pulmonology Plus - Dr. Shalini (Respiratory Therapist)",
-        "Pulmonology Plus - Dr. Mohit (Chest Specialist)"
-    ],
-    "Dental Pain": [
-        "Smile Dental - Dr. Krishna (Dentist)",
-        "Smile Dental - Dr. Anusha (Dental Surgeon)",
-        "Smile Dental - Dr. Rakesh (Oral Specialist)",
-        "Tooth Care Clinic - Dr. Geetha (Orthodontist)",
-        "Tooth Care Clinic - Dr. Shyam (Prosthodontist)",
-        "Tooth Care Clinic - Dr. Neeraja (Endodontist)",
-        "Oral Health Center - Dr. Vinay (Dental Surgeon)",
-        "Oral Health Center - Dr. Lavanya (Cosmetic Dentist)",
-        "Oral Health Center - Dr. Ashwin (Oral & Maxillofacial)"
-    ]
-}
-;
+                "Fever": [
+                    "City Hospital - Dr. Thomas (General Physician)",
+                    "City Hospital - Dr. Meera (Internal Medicine)",
+                    "City Hospital - Dr. Raj (General Physician)",
+                    "Apollo Clinic - Dr. Rina (Family Medicine)",
+                    "Apollo Clinic - Dr. Ajay (General Physician)",
+                    "Apollo Clinic - Dr. Sneha (General Medicine)",
+                    "Green Life - Dr. Anand (Physician)",
+                    "Green Life - Dr. Neha (General Medicine)",
+                    "Green Life - Dr. Kiran (Internal Medicine)"
+                ],
+                "Diabetes": [
+                    "Sunrise Clinic - Dr. Kavitha (Endocrinologist)",
+                    "Sunrise Clinic - Dr. Arun (Diabetologist)",
+                    "Sunrise Clinic - Dr. Nila (General Physician)",
+                    "Sugar Care Center - Dr. Vimal (Diabetologist)",
+                    "Sugar Care Center - Dr. Reshma (Endocrinologist)",
+                    "Sugar Care Center - Dr. Farhan (Internal Medicine)",
+                    "Metro Health - Dr. Isha (Endocrinologist)",
+                    "Metro Health - Dr. Ravi (Diabetologist)",
+                    "Metro Health - Dr. Sneha (General Medicine)"
+                ],
+                "Hypertension": [
+                    "Carewell Hospital - Dr. Veena (Cardiologist)",
+                    "Carewell Hospital - Dr. Mohan (General Physician)",
+                    "Carewell Hospital - Dr. Rekha (Internal Medicine)",
+                    "BP Wellness - Dr. Nikhil (Cardiologist)",
+                    "BP Wellness - Dr. Raji (Hypertension Specialist)",
+                    "BP Wellness - Dr. Karthik (General Physician)",
+                    "MediCare - Dr. Aarti (Cardiologist)",
+                    "MediCare - Dr. Satish (Physician)",
+                    "MediCare - Dr. Laya (Internal Medicine)"
+                ],
+                "Migraine": [
+                    "Neurology Care - Dr. Hari (Neurologist)",
+                    "Neurology Care - Dr. Deepa (Headache Specialist)",
+                    "Neurology Care - Dr. Vikram (Neurologist)",
+                    "Headache Relief Clinic - Dr. Anu (Neurologist)",
+                    "Headache Relief Clinic - Dr. Rajesh (Neuro Specialist)",
+                    "Headache Relief Clinic - Dr. Shreya (Pain Management)",
+                    "NeuroMed - Dr. Divya (Neurologist)",
+                    "NeuroMed - Dr. Kiran (Migraine Specialist)",
+                    "NeuroMed - Dr. Naveen (General Neurology)"
+                ],
+                "Eye Infection": [
+                    "Vision Hospital - Dr. Suresh (Ophthalmologist)",
+                    "Vision Hospital - Dr. Kavya (Eye Surgeon)",
+                    "Vision Hospital - Dr. Vinoth (Eye Specialist)",
+                    "Eye Care Center - Dr. Keerthi (Ophthalmologist)",
+                    "Eye Care Center - Dr. George (Eye Consultant)",
+                    "Eye Care Center - Dr. Lakshmi (Ophthalmologist)",
+                    "Ophthalmic Plus - Dr. Ramesh (Cornea Specialist)",
+                    "Ophthalmic Plus - Dr. Ayesha (Eye Surgeon)",
+                    "Ophthalmic Plus - Dr. Bala (Ophthalmologist)"
+                ],
+                "Skin Allergy": [
+                    "DermaLife - Dr. Nithya (Dermatologist)",
+                    "DermaLife - Dr. Raghav (Skin Specialist)",
+                    "DermaLife - Dr. Anjali (Allergy Specialist)",
+                    "Skin Solutions - Dr. Prakash (Dermatologist)",
+                    "Skin Solutions - Dr. Swetha (Skin Allergy Expert)",
+                    "Skin Solutions - Dr. Manoj (Immunologist)",
+                    "Healthy Skin Clinic - Dr. Dhanya (Dermatologist)",
+                    "Healthy Skin Clinic - Dr. Arjun (Allergy Specialist)",
+                    "Healthy Skin Clinic - Dr. Sana (Skin Specialist)"
+                ],
+                "Thyroid": [
+                    "Hormone Wellness - Dr. Reema (Endocrinologist)",
+                    "Hormone Wellness - Dr. Kishore (Thyroid Specialist)",
+                    "Hormone Wellness - Dr. Meenakshi (Hormone Expert)",
+                    "Endocrine Care - Dr. Dev (Endocrinologist)",
+                    "Endocrine Care - Dr. Ritu (Thyroid Specialist)",
+                    "Endocrine Care - Dr. Farooq (General Endocrinology)",
+                    "Thyroid Cure - Dr. Aarthi (Thyroid Consultant)",
+                    "Thyroid Cure - Dr. Imran (Endocrinologist)",
+                    "Thyroid Cure - Dr. Yash (Hormone Therapy Expert)"
+                ],
+                "Arthritis": [
+                    "Joint Relief Center - Dr. Sanjay (Rheumatologist)",
+                    "Joint Relief Center - Dr. Priya (Ortho-Rheumo)",
+                    "Joint Relief Center - Dr. Abhinav (Orthopedic)",
+                    "Ortho Life - Dr. Swaminathan (Orthopedic Surgeon)",
+                    "Ortho Life - Dr. Isha (Joint Specialist)",
+                    "Ortho Life - Dr. Mani (Physiotherapist)",
+                    "Bone & Joint Care - Dr. Rekha (Ortho-Rheumatology)",
+                    "Bone & Joint Care - Dr. Aditya (Bone Specialist)",
+                    "Bone & Joint Care - Dr. Nidhi (Ortho Expert)"
+                ],
+                "Asthma": [
+                    "Lung Health - Dr. Parth (Pulmonologist)",
+                    "Lung Health - Dr. Jaya (Respiratory Specialist)",
+                    "Lung Health - Dr. Varun (Chest Physician)",
+                    "Breathe Easy - Dr. Snehal (Pulmonologist)",
+                    "Breathe Easy - Dr. Aravind (Asthma Expert)",
+                    "Breathe Easy - Dr. Radhika (Allergy Specialist)",
+                    "Pulmonology Plus - Dr. Dinesh (Pulmonologist)",
+                    "Pulmonology Plus - Dr. Shalini (Respiratory Therapist)",
+                    "Pulmonology Plus - Dr. Mohit (Chest Specialist)"
+                ],
+                "Dental Pain": [
+                    "Smile Dental - Dr. Krishna (Dentist)",
+                    "Smile Dental - Dr. Anusha (Dental Surgeon)",
+                    "Smile Dental - Dr. Rakesh (Oral Specialist)",
+                    "Tooth Care Clinic - Dr. Geetha (Orthodontist)",
+                    "Tooth Care Clinic - Dr. Shyam (Prosthodontist)",
+                    "Tooth Care Clinic - Dr. Neeraja (Endodontist)",
+                    "Oral Health Center - Dr. Vinay (Dental Surgeon)",
+                    "Oral Health Center - Dr. Lavanya (Cosmetic Dentist)",
+                    "Oral Health Center - Dr. Ashwin (Oral & Maxillofacial)"
+                ]
+            }
+                ;
         }
 
         // Populate disease dropdown
@@ -944,71 +1096,71 @@
             });
 
             // Handle Health Information Form Submission
-        // Handle Health Information Form Submission
-        document.getElementById('healthInfoForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
-            const diseaseName = document.getElementById('diseaseInput').value;
-            fetch(`/get_disease_info?disease=${encodeURIComponent(diseaseName)}`)
-                .then(response => response.json())
-                .then(data => {
-                    const summaryDiv = document.getElementById('diseaseSummary');
-                    if (data.error) {
-                        summaryDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
-                    } else {
-                        // Parse the raw string response
-                        let result = data.result;
-                        let symptoms = "No data available";
-                        let causes = "No data available";
-                        let treatment = "No data available";
-                        let foodSuggestions = "No data available";
+            // Handle Health Information Form Submission
+            document.getElementById('healthInfoForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                const diseaseName = document.getElementById('diseaseInput').value;
+                fetch(`/get_disease_info?disease=${encodeURIComponent(diseaseName)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const summaryDiv = document.getElementById('diseaseSummary');
+                        if (data.error) {
+                            summaryDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
+                        } else {
+                            // Parse the raw string response
+                            let result = data.result;
+                            let symptoms = "No data available";
+                            let causes = "No data available";
+                            let treatment = "No data available";
+                            let foodSuggestions = "No data available";
 
-                        if (result.includes("Symptoms:")) {
-                            symptoms = result.split("Symptoms:")[1].split("Causes:")[0].trim();
-                        }
-                        if (result.includes("Causes:")) {
-                            causes = result.split("Causes:")[1].split("Treatment:")[0].trim();
-                        }
-                        if (result.includes("Treatment:")) {
-                            treatment = result.split("Treatment:")[1].split("**Dietary Recommendations:**")[0].trim();
-                        }
-                        if (result.includes("**Dietary Recommendations:**")) {
-                            foodSuggestions = result.split("**Dietary Recommendations:**")[1].trim();
-                        }
+                            if (result.includes("Symptoms:")) {
+                                symptoms = result.split("Symptoms:")[1].split("Causes:")[0].trim();
+                            }
+                            if (result.includes("Causes:")) {
+                                causes = result.split("Causes:")[1].split("Treatment:")[0].trim();
+                            }
+                            if (result.includes("Treatment:")) {
+                                treatment = result.split("Treatment:")[1].split("**Dietary Recommendations:**")[0].trim();
+                            }
+                            if (result.includes("**Dietary Recommendations:**")) {
+                                foodSuggestions = result.split("**Dietary Recommendations:**")[1].trim();
+                            }
 
-                        // Format the information into a structured list
-                        let infoList = `
+                            // Format the information into a structured list
+                            let infoList = `
                         <h4>${diseaseName}</h4>
                         <ul class="list-group">
                     `;
-                    
-                    if (symptoms !== "No data available") {
-                            infoList += `<li class="list-group-item"><strong>Symptoms:</strong> ${symptoms}</li>`;
-                        }
-                        if (causes !== "No data available") {
-                            infoList += `<li class="list-group-item"><strong>Causes:</strong> ${causes}</li>`;
-                        }
-                        if (treatment !== "No data available") {
-                            infoList += `<li class="list-group-item"><strong>Treatment:</strong> ${treatment}</li>`;
-                        }
-                        if (foodSuggestions !== "No data available") {
-                            infoList += `<li class="list-group-item"><strong>Dietary Recommendations:</strong> ${foodSuggestions}</li>`;
-                        }
 
-                        infoList += `</ul>`;
-                        summaryDiv.innerHTML = infoList;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching disease info:', error);
-                    const summaryDiv = document.getElementById('diseaseSummary');
-                    summaryDiv.innerHTML = `<p class="text-danger">Error fetching disease information. Please try again later.</p>`;
-                });
-        });
+                            if (symptoms !== "No data available") {
+                                infoList += `<li class="list-group-item"><strong>Symptoms:</strong> ${symptoms}</li>`;
+                            }
+                            if (causes !== "No data available") {
+                                infoList += `<li class="list-group-item"><strong>Causes:</strong> ${causes}</li>`;
+                            }
+                            if (treatment !== "No data available") {
+                                infoList += `<li class="list-group-item"><strong>Treatment:</strong> ${treatment}</li>`;
+                            }
+                            if (foodSuggestions !== "No data available") {
+                                infoList += `<li class="list-group-item"><strong>Dietary Recommendations:</strong> ${foodSuggestions}</li>`;
+                            }
 
-        document.getElementById('healthInfoModal').addEventListener('hidden.bs.modal', function (event) {
-            document.getElementById('diseaseInput').value = ''; // Clear the input field
-            document.getElementById('diseaseSummary').innerHTML = ''; // Clear the summary content
-        });
+                            infoList += `</ul>`;
+                            summaryDiv.innerHTML = infoList;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching disease info:', error);
+                        const summaryDiv = document.getElementById('diseaseSummary');
+                        summaryDiv.innerHTML = `<p class="text-danger">Error fetching disease information. Please try again later.</p>`;
+                    });
+            });
+
+            document.getElementById('healthInfoModal').addEventListener('hidden.bs.modal', function (event) {
+                document.getElementById('diseaseInput').value = ''; // Clear the input field
+                document.getElementById('diseaseSummary').innerHTML = ''; // Clear the summary content
+            });
             const apiKey = 'b4ce305c94c447aeb4a790b66751a19c';
             const url = `https://newsapi.org/v2/top-headlines?category=health&apiKey=${apiKey}`;
             const newsGrid = document.getElementById('news-grid');
@@ -1068,54 +1220,101 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000,
-    easing: 'ease-in-out',
-    once: true
-  });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('appointmentForm');
-      const messageDiv = document.getElementById('appointmentMessage');
-    
-      // Dummy options — replace with dynamic data if needed
-      const diseases = ['Diabetes', 'Hypertension', 'Flu', 'Migraine'];
-      const clinics = ['Apollo Clinic', 'City Health Center', 'Global Care Hospital'];
-    
-      const diseaseSelect = document.getElementById('disease');
-      const clinicSelect = document.getElementById('clinic');
-    
-      diseases.forEach(d => {
-        const opt = document.createElement('option');
-        opt.value = d;
-        opt.textContent = d;
-        diseaseSelect.appendChild(opt);
-      });
-    
-      clinics.forEach(c => {
-        const opt = document.createElement('option');
-        opt.value = c;
-        opt.textContent = c;
-        clinicSelect.appendChild(opt);
-      });
-    
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-    
-        // Simulate submission
-        messageDiv.innerHTML = `<div class="alert alert-info">Booking appointment...</div>`;
-    
-        setTimeout(() => {
-          messageDiv.innerHTML = `<div class="alert alert-success">Appointment successfully booked!</div>`;
-          form.reset();
-        }, 1000);
-      });
-    });
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true
+        });
     </script>
-    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('appointmentForm');
+            const messageDiv = document.getElementById('appointmentMessage');
+
+            // Dummy options — replace with dynamic data if needed
+            const diseases = ['Diabetes', 'Hypertension', 'Flu', 'Migraine'];
+            const clinics = ['Apollo Clinic', 'City Health Center', 'Global Care Hospital'];
+
+            const diseaseSelect = document.getElementById('disease');
+            const clinicSelect = document.getElementById('clinic');
+
+            diseases.forEach(d => {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.textContent = d;
+                diseaseSelect.appendChild(opt);
+            });
+
+            clinics.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c;
+                opt.textContent = c;
+                clinicSelect.appendChild(opt);
+            });
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Simulate submission
+                messageDiv.innerHTML = `<div class="alert alert-info">Booking appointment...</div>`;
+
+                setTimeout(() => {
+                    messageDiv.innerHTML = `<div class="alert alert-success">Appointment successfully booked!</div>`;
+                    form.reset();
+                }, 1000);
+            });
+        });
+
+
+        let timeout;
+        window.addEventListener('scroll', function () {
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                // Your scroll event logic here
+            }, 100);
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Perform action when element enters the viewport
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll('.lazyload');
+            const options = {
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazyload');
+                        img.style.opacity = 1;
+                        observer.unobserve(img);
+                    }
+                });
+            }, options);
+
+            images.forEach(img => {
+                observer.observe(img);
+            });
+        });
+    </script>
+
 
 </body>
 
